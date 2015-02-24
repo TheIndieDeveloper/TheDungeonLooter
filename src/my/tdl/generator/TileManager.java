@@ -22,6 +22,7 @@ public class TileManager {
 			}else{
 				block.setAlive(false);
 			}
+			
 		}
 	}
 	
@@ -29,6 +30,10 @@ public class TileManager {
 		for(Block block : blocks){
 			block.render(g);
 		}
+	}
+
+	public ArrayList<Block> getBlocks() {
+		return blocks;
 	}
 
 }

@@ -177,6 +177,11 @@ public class Block extends Rectangle{
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
 	}
+
+
+	public Vector2F getBlockLocation() {
+		return pos;
+	}
 	
 	
 	

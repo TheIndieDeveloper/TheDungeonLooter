@@ -5,12 +5,12 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import my.project.gop.main.Vector2F;
 import my.tdl.gameloop.GameLoop;
+import my.tdl.generator.World;
 import my.tdl.main.Animator;
 import my.tdl.main.Assets;
 import my.tdl.main.Check;
@@ -23,6 +23,7 @@ public class Player implements KeyListener {
 
 	
 	Vector2F pos;
+	private World world;
 	private int width = 32;
 	private int height = 32;
 	private int scale = 2;
@@ -76,14 +77,15 @@ public class Player implements KeyListener {
 	
 	private HUDmanager hudm;
 	private GUImanager guim;
-	
+
 	public Player() {
 		hudm = new HUDmanager(this);
 		guim = new GUImanager();
 		pos = new Vector2F(Main.width / 2 - width / 2, Main.height / 2 - height / 2);
 	}
 	
-	public void init() {
+	public void init(World world) {
+		this.world = world;
 		
 		render = new Rectangle(
 				(int) (pos.xpos - pos.getWorldLocation().xpos + pos.xpos - renderDistanceW*32 / 2 + width / 2),
@@ -141,10 +143,12 @@ public class Player implements KeyListener {
 		ani_idle = new Animator(listIdel);
 		ani_idle.setSpeed(180);
 		ani_idle.play();
+		
+		
+		
 	}
 
 	public void tick(double deltaTime) {
-		
 		
 		playerMM.tick();
 		
@@ -651,6 +655,7 @@ public class Player implements KeyListener {
 		hudm.render(g);
 		guim.render(g);
 		playerMM.render(g);
+
 	}
 	
 	@Override
