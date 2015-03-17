@@ -14,6 +14,4 @@ public abstract class GameState {
 	public abstract void tick(double deltaTime);
 	public abstract void render(Graphics2D g);
 
-
-	
 }

@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.Stack;
 
 import my.tdl.gamstates.DungeonLevelLoader;
+import my.tdl.gamstates.MenuState;
 
 public class GameStateManager {
 
@@ -11,7 +12,7 @@ public class GameStateManager {
 	
 	public GameStateManager() {
 		states = new Stack<GameState>();
-		states.push(new DungeonLevelLoader(this));
+		states.push(new MenuState(this));
 	}
 	
 	public void tick(double deltaTime){

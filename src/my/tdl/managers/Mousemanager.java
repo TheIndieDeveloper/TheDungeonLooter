@@ -14,9 +14,9 @@ import my.tdl.main.Assets;
 public class Mousemanager implements MouseListener, MouseMotionListener, MouseWheelListener {
 
 	private static int mouseMovedX,mouseMovedY;
-	private Point mouse;
+	public static Point mouse;
 	
-	private static boolean pressed;
+	public static boolean pressed;
 	
 	public void tick(){
 		mouse = new Point(mouseMovedX, mouseMovedY);

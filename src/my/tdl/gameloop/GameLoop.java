@@ -11,18 +11,14 @@ public class GameLoop extends IDGameLoop {
 
 	GameStateManager gsm;
 	public static Assets assets = new Assets();
-	public static Vector2F map = new Vector2F();
-	
-	
+
 	public GameLoop(int fwidth, int fheight) {
 		super(fwidth, fheight);
 	}
 	
-	
 	@Override
 	public void init() {
 		assets.init();
-		Vector2F.setWorldVaribles(map.xpos, map.ypos);
 		gsm = new GameStateManager();
 		gsm.init();
 		super.init();
@@ -30,7 +26,6 @@ public class GameLoop extends IDGameLoop {
 	
 	@Override
 	public void tick(double deltaTime) {
-		Vector2F.setWorldVaribles(map.xpos, map.ypos);
 		gsm.tick(deltaTime);
 	}
 	

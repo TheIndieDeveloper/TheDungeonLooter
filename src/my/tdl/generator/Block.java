@@ -16,6 +16,13 @@ public class Block extends Rectangle{
 	private BufferedImage block;
 	private boolean isSolid;
 	private boolean isAlive;
+	public boolean droped = false;
+	
+	public Block(Vector2F pos) {
+		setBounds((int)pos.xpos, (int)pos.ypos, BlockSize, BlockSize);
+		this.pos = pos;
+		isAlive = true;
+	}
 	
 	public Block(Vector2F pos, BlockType blocktype) {
 		setBounds((int)pos.xpos, (int)pos.ypos, BlockSize, BlockSize);
@@ -24,8 +31,9 @@ public class Block extends Rectangle{
 		this.blocktype = blocktype;
 		init();
 	}
-	
-	
+
+
+
 	public Block isSolid(boolean isSolid){
 		this.isSolid = isSolid;
 		return this;
@@ -110,10 +118,16 @@ public class Block extends Rectangle{
 		}
 	}
 	
+	
 	public void render(Graphics2D g){
 		if(isAlive){
+			if(block != null){
+				g.drawImage(block, (int)pos.getWorldLocation().xpos, (int)pos.getWorldLocation().ypos, BlockSize, BlockSize, null);
+			}else{
+				g.fillRect((int)pos.getWorldLocation().xpos, (int)pos.getWorldLocation().ypos, BlockSize, BlockSize);
+			}
+			
 			//g.drawRect((int)pos.getWorldLocation().xpos, (int)pos.getWorldLocation().ypos, BlockSize, BlockSize);
-			g.drawImage(block, (int)pos.getWorldLocation().xpos, (int)pos.getWorldLocation().ypos, BlockSize, BlockSize, null);
 			
 			if(isSolid){
 				g.drawRect((int)pos.getWorldLocation().xpos, (int)pos.getWorldLocation().ypos, BlockSize, BlockSize);
@@ -181,6 +195,11 @@ public class Block extends Rectangle{
 
 	public Vector2F getBlockLocation() {
 		return pos;
+	}
+
+
+	public BufferedImage getBlockType() {
+		return block;
 	}
 	
 	
